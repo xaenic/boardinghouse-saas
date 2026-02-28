@@ -40,6 +40,13 @@ Set:
 - `DB_DATABASE=boardinghouse_saas`
 - `DB_USERNAME=boardinghouse_user`
 - `DB_PASSWORD=change-me`
+- `SANCTUM_STATEFUL_DOMAINS=localhost,127.0.0.1,localhost:5173,127.0.0.1:5173,<your-lan-ip>:5173`
+
+3. Frontend API base (optional override):
+
+```bash
+echo "VITE_API_BASE_URL=http://127.0.0.1:8000" > frontend/.env.local
+```
 
 ## Setup
 
@@ -65,7 +72,7 @@ npm install
 
 ```bash
 cd backend
-php artisan serve
+php artisan serve --host=0.0.0.0 --port=8000
 ```
 
 API base: `http://127.0.0.1:8000/api/v1`
@@ -74,10 +81,18 @@ API base: `http://127.0.0.1:8000/api/v1`
 
 ```bash
 cd frontend
-npm run dev
+npm run dev -- --host 0.0.0.0 --port 5173
 ```
 
 App base: `http://127.0.0.1:5173`
+
+## Current API Endpoints
+
+- `GET /api/v1/health`
+- `POST /api/v1/auth/register-tenant`
+- `POST /api/v1/auth/login`
+- `GET /api/v1/auth/me` (requires `auth:sanctum` + tenant context)
+- `POST /api/v1/auth/logout` (requires `auth:sanctum` + tenant context)
 
 ## Lint + Test Commands
 
@@ -86,7 +101,7 @@ App base: `http://127.0.0.1:5173`
 ```bash
 cd backend
 ./vendor/bin/pint --test
-./vendor/bin/phpstan analyse
+./vendor/bin/phpstan analyse --memory-limit=512M
 php artisan test
 ```
 
@@ -103,24 +118,28 @@ npm run build
 
 ### Backend
 
-- Modular folders created:
+- Modular folders:
   - `app/Domain`
   - `app/Application`
   - `app/Infrastructure`
   - `app/Http`
-- Service + Repository pattern will be implemented per module in next milestones.
-- API versioning is in place: `/api/v1/*`.
-- Standard JSON envelope exists (`success`, `message`, `data`, `meta`).
-- Tenant context middleware (`X-Tenant-Id`) and tenant global scope trait are scaffolded.
-- UUID primary keys are used for tenant-owned core models (`tenants`, `users`).
-- Sanctum (SPA auth) installed and configured for stateful API middleware.
-- Spatie Permission installed for role-based authorization (`Owner`, `Staff` to be seeded in next milestone).
+- Service + Repository pattern implemented for Auth:
+  - `TenantRepositoryInterface`, `UserRepositoryInterface`
+  - Eloquent repository implementations
+  - `RegisterTenantService`, `LoginService`
+- API versioning in place: `/api/v1/*`.
+- Standard JSON envelope: `success`, `message`, `data`, `meta`.
+- Tenant middleware + global tenant scope scaffolded.
+- UUID primary keys on tenant-owned core tables (`tenants`, `users`).
+- Sanctum (SPA cookie auth) configured.
+- Spatie Permission configured (roles: `Owner`, `Staff` bootstrap on registration).
+- Feature tests cover tenant isolation and auth registration/login behavior.
 
 ### Frontend
 
 - React + TS strict mode
-- TanStack Router base layout and route setup
-- TanStack Query provider configured globally
+- TanStack Router + TanStack Query providers
+- Auth bootstrap UI for register/login/me/logout
 - ESLint + Prettier configured
 
 ## MVP Demo Flow (Target)
