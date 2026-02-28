@@ -41,6 +41,17 @@ export function LoginPage() {
     onError: (error) => setResult((error as Error).message),
   })
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    if (!form.tenant_slug.trim() || !form.email.trim() || !form.password.trim()) {
+      toast.error('Please fill tenant slug, email, and password.')
+      return
+    }
+
+    mutation.mutate()
+  }
+
   return (
     <section className="auth-premium-layout">
       <aside className="auth-showcase">
@@ -61,13 +72,7 @@ export function LoginPage() {
         </div>
       </aside>
 
-      <form
-        className="auth-premium-form"
-        onSubmit={(event) => {
-          event.preventDefault()
-          mutation.mutate()
-        }}
-      >
+      <form className="auth-premium-form" onSubmit={handleSubmit}>
         <h2>Welcome Back</h2>
         <p className="muted">Sign in with your organization credentials.</p>
 
@@ -101,6 +106,8 @@ export function LoginPage() {
         <button type="submit" className="btn btn-primary" disabled={mutation.isPending}>
           {mutation.isPending ? 'Signing in...' : 'Sign In'}
         </button>
+
+        {mutation.isPending && <p className="form-hint">Submitting login...</p>}
 
         <p className="footnote">
           Need an account? <Link to="/register">Create one</Link>
