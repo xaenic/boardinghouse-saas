@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import dashboardHero from '../assets/visuals/dashboard-hero.svg'
 
 const features = [
   {
@@ -62,39 +63,8 @@ export function LandingPage() {
           </div>
         </div>
 
-        <div className="dashboard-card">
-          <div className="dash-head">
-            <span>Revenue Overview</span>
-            <strong>+18.2%</strong>
-          </div>
-          <div className="line-chart">
-            <svg viewBox="0 0 320 140" preserveAspectRatio="none">
-              <path d="M0 110 C40 95, 60 100, 95 80 S150 70, 190 55 S250 40, 320 20" />
-            </svg>
-          </div>
-          <div className="dash-stats">
-            <article>
-              <span className="dot dot-purple" />
-              <div>
-                <h4>$182k</h4>
-                <p>Monthly billed</p>
-              </div>
-            </article>
-            <article>
-              <span className="dot dot-blue" />
-              <div>
-                <h4>96.4%</h4>
-                <p>Collected on time</p>
-              </div>
-            </article>
-            <article>
-              <span className="dot dot-green" />
-              <div>
-                <h4>412</h4>
-                <p>Active tenants</p>
-              </div>
-            </article>
-          </div>
+        <div className="dashboard-card image-card">
+          <img src={dashboardHero} alt="CRM dashboard preview" className="ui-image" />
         </div>
       </section>
 

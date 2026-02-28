@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { Link, useNavigate } from '@tanstack/react-router'
+import registerVisual from '../assets/visuals/auth-register.svg'
 import { apiRequest, ensureCsrfCookie } from '../lib/api'
 import type { AuthUser, RegisterPayload } from '../types/auth'
 
@@ -42,23 +43,13 @@ export function RegisterPage() {
   return (
     <section className="auth-premium-layout">
       <aside className="auth-showcase">
+        <img src={registerVisual} alt="Workspace registration visual" className="auth-image" />
         <p className="eyebrow">Workspace Onboarding</p>
         <h1>Launch your rental SaaS workspace</h1>
         <p>
           Create your tenant account, assign owner privileges, and start managing your portfolio
-          with secure multi- tenant architecture.
+          with secure multi-tenant architecture.
         </p>
-
-        <div className="auth-showcase-grid">
-          <article>
-            <h3>Fast setup</h3>
-            <p>Provision organization and owner in one flow.</p>
-          </article>
-          <article>
-            <h3>Production-ready core</h3>
-            <p>Service/repository architecture with strict standards.</p>
-          </article>
-        </div>
       </aside>
 
       <form

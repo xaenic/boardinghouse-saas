@@ -1,0 +1,43 @@
+<svg width="980" height="620" viewBox="0 0 980 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="980" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#121A2B"/>
+      <stop offset="1" stop-color="#0C111D"/>
+    </linearGradient>
+    <linearGradient id="line" x1="164" y1="300" x2="792" y2="168" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#60A5FA"/>
+    </linearGradient>
+    <filter id="glow" x="118" y="102" width="726" height="268" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="14" y="14" width="952" height="592" rx="24" fill="url(#bg)" stroke="rgba(255,255,255,0.10)"/>
+  <rect x="58" y="64" width="864" height="66" rx="14" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="92" cy="97" r="8" fill="#A78BFA"/>
+  <circle cx="118" cy="97" r="8" fill="#60A5FA"/>
+  <circle cx="144" cy="97" r="8" fill="#34D399"/>
+  <rect x="182" y="84" width="178" height="24" rx="10" fill="rgba(255,255,255,0.08)"/>
+  <rect x="70" y="164" width="590" height="366" rx="18" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
+  <line x1="116" y1="214" x2="614" y2="214" stroke="rgba(255,255,255,0.06)"/>
+  <line x1="116" y1="264" x2="614" y2="264" stroke="rgba(255,255,255,0.06)"/>
+  <line x1="116" y1="314" x2="614" y2="314" stroke="rgba(255,255,255,0.06)"/>
+  <line x1="116" y1="364" x2="614" y2="364" stroke="rgba(255,255,255,0.06)"/>
+  <line x1="116" y1="414" x2="614" y2="414" stroke="rgba(255,255,255,0.06)"/>
+  <g filter="url(#glow)">
+    <path d="M164 328C238 274 274 298 340 256C406 214 482 246 536 212C590 178 652 194 792 138" stroke="url(#line)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <circle cx="340" cy="256" r="8" fill="#A78BFA"/>
+  <circle cx="536" cy="212" r="8" fill="#60A5FA"/>
+  <circle cx="792" cy="138" r="9" fill="#34D399"/>
+  <rect x="696" y="164" width="214" height="116" rx="16" fill="rgba(124,58,237,0.12)" stroke="rgba(167,139,250,0.45)"/>
+  <rect x="696" y="296" width="214" height="116" rx="16" fill="rgba(59,130,246,0.10)" stroke="rgba(96,165,250,0.40)"/>
+  <rect x="696" y="428" width="214" height="102" rx="16" fill="rgba(16,185,129,0.10)" stroke="rgba(52,211,153,0.40)"/>
+  <rect x="716" y="194" width="120" height="18" rx="8" fill="rgba(255,255,255,0.20)"/>
+  <rect x="716" y="222" width="86" height="12" rx="6" fill="rgba(255,255,255,0.13)"/>
+  <rect x="716" y="326" width="120" height="18" rx="8" fill="rgba(255,255,255,0.20)"/>
+  <rect x="716" y="354" width="86" height="12" rx="6" fill="rgba(255,255,255,0.13)"/>
+  <rect x="716" y="458" width="120" height="18" rx="8" fill="rgba(255,255,255,0.20)"/>
+  <rect x="716" y="486" width="86" height="12" rx="6" fill="rgba(255,255,255,0.13)"/>
+</svg>

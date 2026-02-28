@@ -621,3 +621,75 @@ input::placeholder {
 .main-wrap-auth .auth-premium-form {
   height: 100%;
 }
+
+@media (max-width: 900px) {
+  .top-nav {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .top-nav .btn {
+    width: 100%;
+  }
+
+  .main-wrap {
+    width: min(1160px, calc(100% - 1.2rem));
+    padding-top: 1.4rem;
+  }
+
+  .auth-premium-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-wrap-auth .auth-premium-layout {
+    min-height: auto;
+  }
+
+  .main-wrap-auth .auth-showcase,
+  .main-wrap-auth .auth-premium-form {
+    height: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-title {
+    font-size: 1.9rem;
+  }
+
+  .hero-actions,
+  .auth-premium-form .btn {
+    width: 100%;
+  }
+
+  .hero-actions .btn,
+  .auth-premium-form .btn,
+  .price-card .btn {
+    width: 100%;
+  }
+
+  .dash-stats article {
+    align-items: flex-start;
+  }
+}
+
+.image-card {
+  padding: 0.6rem;
+}
+
+.ui-image,
+.auth-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+
+.auth-image {
+  margin-bottom: 0.5rem;
+}

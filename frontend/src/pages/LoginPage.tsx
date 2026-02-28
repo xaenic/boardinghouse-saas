@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { Link, useNavigate } from '@tanstack/react-router'
+import loginVisual from '../assets/visuals/auth-login.svg'
 import { apiRequest, ensureCsrfCookie } from '../lib/api'
 import type { AuthUser, LoginPayload } from '../types/auth'
 
@@ -31,23 +32,13 @@ export function LoginPage() {
   return (
     <section className="auth-premium-layout">
       <aside className="auth-showcase">
+        <img src={loginVisual} alt="Secure login analytics visual" className="auth-image" />
         <p className="eyebrow">Secure Sign-In</p>
         <h1>Access your operations dashboard</h1>
         <p>
           Authenticate with tenant slug credentials and continue where your team left off in
           billing, collections, and occupancy workflows.
         </p>
-
-        <div className="auth-showcase-grid">
-          <article>
-            <h3>Role-aware sessions</h3>
-            <p>Owner and Staff permissions resolved at request level.</p>
-          </article>
-          <article>
-            <h3>Tenant context safety</h3>
-            <p>Scoped access ensures strict data boundaries.</p>
-          </article>
-        </div>
       </aside>
 
       <form
