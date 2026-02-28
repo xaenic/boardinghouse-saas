@@ -1,9 +1,4 @@
-const resolvedBaseUrl =
-  typeof window !== 'undefined'
-    ? `${window.location.protocol}//${window.location.hostname}:8000`
-    : 'http://127.0.0.1:8000'
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? resolvedBaseUrl
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? ''
 
 export async function ensureCsrfCookie(): Promise<void> {
   try {
@@ -16,7 +11,7 @@ export async function ensureCsrfCookie(): Promise<void> {
       throw new Error(`Failed to initialize CSRF cookie (${response.status}).`)
     }
   } catch {
-    throw new Error(`Unable to reach backend at ${API_BASE_URL}. Check network/API URL.`)
+    throw new Error('Unable to reach backend. Verify Vite proxy or API base URL configuration.')
   }
 }
 
@@ -34,7 +29,7 @@ export async function apiRequest<T>(path: string, init?: RequestInit): Promise<T
       ...init,
     })
   } catch {
-    throw new Error(`Unable to reach backend at ${API_BASE_URL}. Check network/API URL.`)
+    throw new Error('Unable to reach backend. Verify Vite proxy or API base URL configuration.')
   }
 
   const contentType = response.headers.get('content-type') ?? ''
