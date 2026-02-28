@@ -693,3 +693,12 @@ input::placeholder {
 .auth-image {
   margin-bottom: 0.5rem;
 }
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  background: rgba(255, 255, 255, 0.04);
+}

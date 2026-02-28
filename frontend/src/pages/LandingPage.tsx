@@ -34,11 +34,15 @@ const testimonials = [
     role: 'Finance Director, UrbanNest',
     quote:
       'Collection workflows became dramatically faster and our monthly close is now predictable.',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/adventurer/svg?seed=Nina%20Park&backgroundType=gradientLinear',
   },
   {
     name: 'Marco Dela Cruz',
     role: 'COO, StayScale Group',
     quote: 'The product feels premium and gives our team confidence when scaling to new branches.',
+    avatarUrl:
+      'https://api.dicebear.com/9.x/adventurer/svg?seed=Marco%20Dela%20Cruz&backgroundType=gradientLinear',
   },
 ]
 
@@ -159,7 +163,12 @@ export function LandingPage() {
             <article key={item.name} className="glass-card hover-lift">
               <p>“{item.quote}”</p>
               <div className="author">
-                <span className="avatar" />
+                <img
+                  src={item.avatarUrl}
+                  alt={`${item.name} avatar`}
+                  className="avatar"
+                  loading="lazy"
+                />
                 <div>
                   <strong>{item.name}</strong>
                   <small>{item.role}</small>
