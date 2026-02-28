@@ -1,30 +1,51 @@
 import { Link } from '@tanstack/react-router'
+import {
+  BarChart3,
+  BellRing,
+  FileSpreadsheet,
+  Receipt,
+  ShieldCheck,
+  UsersRound,
+  type LucideIcon,
+} from 'lucide-react'
 import dashboardHero from '../assets/visuals/dashboard-hero.svg'
 
-const features = [
+type Feature = {
+  title: string
+  body: string
+  icon: LucideIcon
+}
+
+const features: Feature[] = [
   {
     title: 'Tenant-Safe Data Layer',
     body: 'Global tenant scoping and middleware context enforce strict account isolation.',
+    icon: ShieldCheck,
   },
   {
     title: 'Smart Billing Engine',
     body: 'Recurring invoices, penalties, and partial payment reconciliation in one workflow.',
+    icon: Receipt,
   },
   {
     title: 'Portfolio Analytics',
     body: 'Live occupancy, receivables, and revenue visibility across all properties.',
+    icon: BarChart3,
   },
   {
     title: 'Role-Based Access',
     body: 'Owner and staff permissions powered by enforceable authorization policies.',
+    icon: UsersRound,
   },
   {
     title: 'CSV and Financial Export',
     body: 'Generate reports instantly for accounting and operational reviews.',
+    icon: FileSpreadsheet,
   },
   {
     title: 'Operational Alerts',
     body: 'Flag overdue accounts and expiring leases before they become risk points.',
+    icon: BellRing,
   },
 ]
 
@@ -78,13 +99,19 @@ export function LandingPage() {
           <h2>Everything your operations team needs</h2>
         </div>
         <div className="feature-grid">
-          {features.map((feature) => (
-            <article key={feature.title} className="glass-card hover-lift">
-              <div className="feature-icon" />
-              <h3>{feature.title}</h3>
-              <p>{feature.body}</p>
-            </article>
-          ))}
+          {features.map((feature) => {
+            const Icon = feature.icon
+
+            return (
+              <article key={feature.title} className="glass-card hover-lift">
+                <div className="feature-icon">
+                  <Icon size={18} />
+                </div>
+                <h3>{feature.title}</h3>
+                <p>{feature.body}</p>
+              </article>
+            )
+          })}
         </div>
       </section>
 

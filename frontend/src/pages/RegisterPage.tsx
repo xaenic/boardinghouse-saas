@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { Link, useNavigate } from '@tanstack/react-router'
+import { Building2, Sparkles } from 'lucide-react'
 import registerVisual from '../assets/visuals/auth-register.svg'
 import { apiRequest, ensureCsrfCookie } from '../lib/api'
 import type { AuthUser, RegisterPayload } from '../types/auth'
@@ -50,6 +51,14 @@ export function RegisterPage() {
           Create your tenant account, assign owner privileges, and start managing your portfolio
           with secure multi-tenant architecture.
         </p>
+        <div className="auth-points">
+          <p>
+            <Building2 size={16} /> Provision tenant and owner in one step
+          </p>
+          <p>
+            <Sparkles size={16} /> Production-ready auth and role scaffolding
+          </p>
+        </div>
       </aside>
 
       <form

@@ -702,3 +702,31 @@ input::placeholder {
   border: 1px solid rgba(167, 139, 250, 0.45);
   background: rgba(255, 255, 255, 0.04);
 }
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #d8b4fe;
+}
+
+.footer-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.auth-points {
+  margin-top: 0.5rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.auth-points p {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #cbd5e1;
+  font-size: 0.86rem;
+}

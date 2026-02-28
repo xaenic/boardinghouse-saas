@@ -1,4 +1,5 @@
 import { Link, Outlet, useRouterState } from '@tanstack/react-router'
+import { BookOpen, Building2, Package } from 'lucide-react'
 
 export function PublicLayout() {
   const pathname = useRouterState({ select: (state) => state.location.pathname })
@@ -53,19 +54,25 @@ export function PublicLayout() {
 
             <div className="footer-cols">
               <div>
-                <h4>Product</h4>
+                <h4 className="footer-head">
+                  <Package size={14} /> Product
+                </h4>
                 <a href="#">Features</a>
                 <a href="#">Pricing</a>
                 <a href="#">Integrations</a>
               </div>
               <div>
-                <h4>Company</h4>
+                <h4 className="footer-head">
+                  <Building2 size={14} /> Company
+                </h4>
                 <a href="#">About</a>
                 <a href="#">Blog</a>
                 <a href="#">Careers</a>
               </div>
               <div>
-                <h4>Resources</h4>
+                <h4 className="footer-head">
+                  <BookOpen size={14} /> Resources
+                </h4>
                 <a href="#">Documentation</a>
                 <a href="#">API</a>
                 <a href="#">Support</a>

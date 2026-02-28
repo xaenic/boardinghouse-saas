@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { Link, useNavigate } from '@tanstack/react-router'
+import { KeyRound, ShieldCheck } from 'lucide-react'
 import loginVisual from '../assets/visuals/auth-login.svg'
 import { apiRequest, ensureCsrfCookie } from '../lib/api'
 import type { AuthUser, LoginPayload } from '../types/auth'
@@ -39,6 +40,14 @@ export function LoginPage() {
           Authenticate with tenant slug credentials and continue where your team left off in
           billing, collections, and occupancy workflows.
         </p>
+        <div className="auth-points">
+          <p>
+            <ShieldCheck size={16} /> Role-aware sessions and guarded endpoints
+          </p>
+          <p>
+            <KeyRound size={16} /> Tenant-scoped access controls by default
+          </p>
+        </div>
       </aside>
 
       <form
