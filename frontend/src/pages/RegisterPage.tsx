@@ -40,21 +40,37 @@ export function RegisterPage() {
   })
 
   return (
-    <section className="auth-layout">
-      <aside className="auth-side card-surface">
-        <p className="eyebrow">Create Workspace</p>
-        <h1>Start your rental SaaS workspace</h1>
-        <p>Provision tenant account, owner role, and secure auth context in one setup.</p>
+    <section className="auth-premium-layout">
+      <aside className="auth-showcase">
+        <p className="eyebrow">Workspace Onboarding</p>
+        <h1>Launch your rental SaaS workspace</h1>
+        <p>
+          Create your tenant account, assign owner privileges, and start managing your portfolio
+          with secure multi- tenant architecture.
+        </p>
+
+        <div className="auth-showcase-grid">
+          <article>
+            <h3>Fast setup</h3>
+            <p>Provision organization and owner in one flow.</p>
+          </article>
+          <article>
+            <h3>Production-ready core</h3>
+            <p>Service/repository architecture with strict standards.</p>
+          </article>
+        </div>
       </aside>
 
       <form
-        className="auth-form card-surface"
+        className="auth-premium-form"
         onSubmit={(event) => {
           event.preventDefault()
           mutation.mutate()
         }}
       >
-        <h2>Register</h2>
+        <h2>Create Workspace</h2>
+        <p className="muted">Start your 14-day trial, no credit card required.</p>
+
         <label>
           <span>Business Name</span>
           <input
@@ -109,7 +125,11 @@ export function RegisterPage() {
           />
         </label>
 
-        <button type="submit" disabled={mutation.isPending || !isComplete}>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={mutation.isPending || !isComplete}
+        >
           {mutation.isPending ? 'Creating...' : 'Create Workspace'}
         </button>
 

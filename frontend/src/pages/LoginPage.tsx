@@ -29,21 +29,37 @@ export function LoginPage() {
   })
 
   return (
-    <section className="auth-layout">
-      <aside className="auth-side card-surface">
-        <p className="eyebrow">Secure Access</p>
-        <h1>Welcome back</h1>
-        <p>Sign in with tenant slug credentials to continue to your operations dashboard.</p>
+    <section className="auth-premium-layout">
+      <aside className="auth-showcase">
+        <p className="eyebrow">Secure Sign-In</p>
+        <h1>Access your operations dashboard</h1>
+        <p>
+          Authenticate with tenant slug credentials and continue where your team left off in
+          billing, collections, and occupancy workflows.
+        </p>
+
+        <div className="auth-showcase-grid">
+          <article>
+            <h3>Role-aware sessions</h3>
+            <p>Owner and Staff permissions resolved at request level.</p>
+          </article>
+          <article>
+            <h3>Tenant context safety</h3>
+            <p>Scoped access ensures strict data boundaries.</p>
+          </article>
+        </div>
       </aside>
 
       <form
-        className="auth-form card-surface"
+        className="auth-premium-form"
         onSubmit={(event) => {
           event.preventDefault()
           mutation.mutate()
         }}
       >
-        <h2>Login</h2>
+        <h2>Welcome Back</h2>
+        <p className="muted">Sign in with your organization credentials.</p>
+
         <label>
           <span>Tenant Slug</span>
           <input
@@ -71,7 +87,7 @@ export function LoginPage() {
           />
         </label>
 
-        <button type="submit" disabled={mutation.isPending}>
+        <button type="submit" className="btn btn-primary" disabled={mutation.isPending}>
           {mutation.isPending ? 'Signing in...' : 'Sign In'}
         </button>
 
