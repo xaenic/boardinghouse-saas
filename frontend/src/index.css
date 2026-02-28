@@ -605,3 +605,19 @@ input::placeholder {
 .auth-premium-form h2 {
   margin: 0;
 }
+
+.main-wrap-auth {
+  width: min(980px, calc(100% - 2rem));
+  padding-top: 1.1rem;
+  padding-bottom: 2rem;
+}
+
+.main-wrap-auth .auth-premium-layout {
+  min-height: calc(100vh - 180px);
+  align-items: stretch;
+}
+
+.main-wrap-auth .auth-showcase,
+.main-wrap-auth .auth-premium-form {
+  height: 100%;
+}
