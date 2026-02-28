@@ -16,7 +16,6 @@ class AuthRegistrationTest extends TestCase
     {
         $response = $this->postJson('/api/v1/auth/register-tenant', [
             'tenant_name' => 'Boarding One',
-            'tenant_slug' => 'boarding-one',
             'owner_name' => 'Owner One',
             'owner_email' => 'owner@example.com',
             'password' => 'secret123',
@@ -25,12 +24,30 @@ class AuthRegistrationTest extends TestCase
 
         $response->assertCreated()
             ->assertJsonPath('success', true)
-            ->assertJsonPath('data.roles.0', 'Owner');
+            ->assertJsonPath('data.roles.0', 'Owner')
+            ->assertJsonPath('data.tenant_slug', 'boarding-one');
 
         $this->assertDatabaseHas('tenants', ['slug' => 'boarding-one']);
         $this->assertDatabaseHas('users', ['email' => 'owner@example.com']);
         $this->assertDatabaseHas('roles', ['name' => 'Owner', 'guard_name' => 'web']);
         $this->assertDatabaseHas('roles', ['name' => 'Staff', 'guard_name' => 'web']);
+    }
+
+    public function test_tenant_slug_generation_appends_suffix_when_name_collides(): void
+    {
+        Tenant::query()->create(['name' => 'Boarding One', 'slug' => 'boarding-one']);
+
+        $response = $this->postJson('/api/v1/auth/register-tenant', [
+            'tenant_name' => 'Boarding One',
+            'owner_name' => 'Owner Two',
+            'owner_email' => 'owner2@example.com',
+            'password' => 'secret123',
+            'password_confirmation' => 'secret123',
+        ]);
+
+        $response->assertCreated()->assertJsonPath('data.tenant_slug', 'boarding-one-2');
+
+        $this->assertDatabaseHas('tenants', ['slug' => 'boarding-one-2']);
     }
 
     public function test_login_uses_tenant_slug_and_scopes_duplicate_emails(): void
@@ -61,6 +78,7 @@ class AuthRegistrationTest extends TestCase
 
         $response->assertOk()
             ->assertJsonPath('success', true)
-            ->assertJsonPath('data.tenant_id', $tenantA->id);
+            ->assertJsonPath('data.tenant_id', $tenantA->id)
+            ->assertJsonPath('data.tenant_slug', 'tenant-a');
     }
 }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { Link, useNavigate } from '@tanstack/react-router'
 import { KeyRound, ShieldCheck } from 'lucide-react'
+import { toast } from 'sonner'
 import loginVisual from '../assets/visuals/auth-login.svg'
 import { apiRequest, ensureCsrfCookie } from '../lib/api'
 import type { AuthUser, LoginPayload } from '../types/auth'
@@ -17,11 +18,21 @@ export function LoginPage() {
 
   const mutation = useMutation({
     mutationFn: async (): Promise<AuthUser> => {
-      await ensureCsrfCookie()
-      return apiRequest<AuthUser>('/api/v1/auth/login', {
-        method: 'POST',
-        body: JSON.stringify(form),
-      })
+      const loadingToast = toast.loading('Signing you in...')
+
+      try {
+        await ensureCsrfCookie()
+        const data = await apiRequest<AuthUser>('/api/v1/auth/login', {
+          method: 'POST',
+          body: JSON.stringify(form),
+        })
+        toast.success('Signed in successfully', { id: loadingToast })
+
+        return data
+      } catch (error) {
+        toast.error((error as Error).message, { id: loadingToast })
+        throw error
+      }
     },
     onSuccess: (data) => {
       setResult(`Welcome back ${data.name}.`)

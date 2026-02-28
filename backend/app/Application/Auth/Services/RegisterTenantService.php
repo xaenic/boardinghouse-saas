@@ -7,6 +7,7 @@ use App\Domain\Auth\Repositories\UserRepositoryInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 
 class RegisterTenantService
@@ -17,7 +18,7 @@ class RegisterTenantService
     ) {}
 
     /**
-     * @param  array{tenant_name:string,tenant_slug:string,owner_name:string,owner_email:string,password:string}  $payload
+     * @param  array{tenant_name:string,owner_name:string,owner_email:string,password:string}  $payload
      */
     public function handle(array $payload): User
     {
@@ -27,7 +28,7 @@ class RegisterTenantService
 
             $tenant = $this->tenantRepository->create([
                 'name' => $payload['tenant_name'],
-                'slug' => $payload['tenant_slug'],
+                'slug' => $this->generateTenantSlug($payload['tenant_name']),
             ]);
 
             $user = $this->userRepository->create([
@@ -41,5 +42,21 @@ class RegisterTenantService
 
             return $user;
         });
+    }
+
+    private function generateTenantSlug(string $tenantName): string
+    {
+        $baseSlug = Str::slug($tenantName);
+        $baseSlug = $baseSlug !== '' ? $baseSlug : 'tenant';
+
+        $candidate = $baseSlug;
+        $counter = 1;
+
+        while ($this->tenantRepository->findBySlug($candidate) !== null) {
+            $counter++;
+            $candidate = sprintf('%s-%d', $baseSlug, $counter);
+        }
+
+        return $candidate;
     }
 }

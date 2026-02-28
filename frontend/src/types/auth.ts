@@ -1,6 +1,7 @@
 export type AuthUser = {
   id: string
   tenant_id: string | null
+  tenant_slug: string | null
   name: string
   email: string
   roles: string[]
@@ -8,7 +9,6 @@ export type AuthUser = {
 
 export type RegisterPayload = {
   tenant_name: string
-  tenant_slug: string
   owner_name: string
   owner_email: string
   password: string
