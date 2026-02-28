@@ -1,35 +1,32 @@
 export function AboutPage() {
   return (
     <section className="page-stack">
-      <section className="card-surface intro-block">
+      <section className="card-surface intro-block premium-intro">
         <p className="eyebrow">About</p>
-        <h1>Built for property operators who need discipline and speed</h1>
+        <h1>We build focused SaaS infrastructure for rental businesses</h1>
         <p className="lead">
-          BoardingHouse SaaS is focused on operational clarity for managers handling recurring rent,
-          lease compliance, and collections.
+          BoardingHouse SaaS helps property operators improve collections, tighten controls, and run
+          reliable monthly workflows at scale.
         </p>
       </section>
 
       <section className="about-grid">
         <article className="feature-card">
-          <h3>Our Mission</h3>
+          <h3>Mission</h3>
           <p>
-            Reduce payment leakage and operational chaos in rental businesses through reliable
-            software workflows.
+            Bring enterprise-grade discipline to rental operations without adding enterprise
+            complexity.
           </p>
         </article>
         <article className="feature-card">
-          <h3>Security First</h3>
-          <p>
-            Tenant data boundaries are enforced through scoped queries and middleware-level context
-            checks.
-          </p>
+          <h3>Reliability</h3>
+          <p>Designed around auditable billing flows and consistent financial state transitions.</p>
         </article>
         <article className="feature-card">
-          <h3>Practical Product</h3>
+          <h3>Security</h3>
           <p>
-            Designed for teams that care about collections, occupancy, and accountability every
-            month.
+            Tenant isolation and role boundaries are first-class implementation concerns, not
+            afterthoughts.
           </p>
         </article>
       </section>

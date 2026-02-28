@@ -3,12 +3,12 @@ import { Link } from '@tanstack/react-router'
 export function PricingPage() {
   return (
     <section className="page-stack">
-      <section className="card-surface intro-block">
+      <section className="card-surface intro-block premium-intro">
         <p className="eyebrow">Pricing</p>
-        <h1>Simple plans for growing rental operations</h1>
+        <h1>Choose a plan that matches your portfolio size</h1>
       </section>
 
-      <section className="pricing-grid">
+      <section className="pricing-grid premium-pricing">
         <article className="price-card">
           <h3>Starter</h3>
           <p className="price-tag">$29 / month</p>
@@ -16,7 +16,7 @@ export function PricingPage() {
             <li>1 property</li>
             <li>Up to 40 rooms</li>
             <li>Owner + 2 staff</li>
-            <li>Basic reports</li>
+            <li>Core reporting</li>
           </ul>
           <Link to="/register" className="button-link button-primary">
             Choose Starter
@@ -24,6 +24,7 @@ export function PricingPage() {
         </article>
 
         <article className="price-card price-card-highlight">
+          <p className="badge">Most Popular</p>
           <h3>Growth</h3>
           <p className="price-tag">$79 / month</p>
           <ul>
@@ -42,7 +43,7 @@ export function PricingPage() {
           <p className="price-tag">Custom</p>
           <ul>
             <li>Multi-branch operations</li>
-            <li>Enterprise support</li>
+            <li>Priority support</li>
             <li>Custom integrations</li>
             <li>Dedicated onboarding</li>
           </ul>

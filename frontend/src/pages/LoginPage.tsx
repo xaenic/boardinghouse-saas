@@ -32,8 +32,8 @@ export function LoginPage() {
     <section className="auth-layout">
       <aside className="auth-side card-surface">
         <p className="eyebrow">Secure Access</p>
-        <h1>Login to your operations console</h1>
-        <p>Tenant-aware session authentication with strict isolation.</p>
+        <h1>Welcome back</h1>
+        <p>Sign in with tenant slug credentials to continue to your operations dashboard.</p>
       </aside>
 
       <form
@@ -43,7 +43,7 @@ export function LoginPage() {
           mutation.mutate()
         }}
       >
-        <h2>Welcome Back</h2>
+        <h2>Login</h2>
         <label>
           <span>Tenant Slug</span>
           <input

@@ -42,9 +42,9 @@ export function RegisterPage() {
   return (
     <section className="auth-layout">
       <aside className="auth-side card-surface">
-        <p className="eyebrow">Get Started</p>
-        <h1>Set up your rental workspace</h1>
-        <p>Provision your organization and bootstrap owner permissions in one flow.</p>
+        <p className="eyebrow">Create Workspace</p>
+        <h1>Start your rental SaaS workspace</h1>
+        <p>Provision tenant account, owner role, and secure auth context in one setup.</p>
       </aside>
 
       <form
@@ -54,7 +54,7 @@ export function RegisterPage() {
           mutation.mutate()
         }}
       >
-        <h2>Create Account</h2>
+        <h2>Register</h2>
         <label>
           <span>Business Name</span>
           <input
